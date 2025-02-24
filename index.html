@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Number Calculator</h1>
+        <input type="number" id="numberInput" placeholder="Enter a number">
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const pageLength = 5616;
+        const lineLength = 108;
+
+        document.getElementById('numberInput').addEventListener('input', function() {
+            const num = parseInt(this.value);
+            if (!isNaN(num)) {
+                const page = Math.trunc(num / pageLength) + 1;
+                const remainder = num % pageLength;
+                const line = Math.trunc(remainder / lineLength) + 1;
+                document.getElementById('result').textContent = `Your number is on page ${page}, line ${line}`;
+            } else {
+                document.getElementById('result').textContent = '';
+            }
+        });
+    </script>
+</body>
+</html>
